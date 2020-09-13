@@ -4,7 +4,7 @@ services:
 before_install:
     - docker build -t sameepsam34/test-react -f ./client/Dockerfile.dev ./client
 scripts:
-    - docker run sameepsam34/test-react npm test
+    - docker run -e CI=true sameepsam34/test-react npm test
 after_success:
     - docker build -t sameepsam34/client ./client
     - docker build -t sameepsam34/worker ./worker
